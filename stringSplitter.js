@@ -1,7 +1,14 @@
 const stringSplitter = (date, separator = '') => {
   separator = date[2]
+  if (date[2] !== separator) return []
+  if (date[2] === separator) {
+    date = date.slice(0, 3)
+  }
 
-  return []
+  let newDate = date.slice(3)
+
+  return newDate
+  return [date, ...stringSplitter(newDate, separator)]
 }
 
-stringSplitter('02-02-2020')
+console.log(stringSplitter('2020'))
